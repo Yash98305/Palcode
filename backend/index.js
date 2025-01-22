@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 // const Card = require("./models/cardModel.js")
+// const List = require("./models/listModel.js")
 // const mongoose = require("mongoose")
 dotenv.config();
 
@@ -27,13 +28,29 @@ app.use("/api/v1/auth", authRoute);
 //   { id: "5", title: "Card 5", description: "This is card 5", position: 5 },
 //   { id: "6", title: "Card 6", description: "This is card 6", position: 6 },
 // ];
+// const initialList = [
+//      { title: "video title name 1", image : "https://dappered.com/wp-content/uploads/2016/08/Playlist_Header_large_posterized.jpg",attached : "product attached 7"},
+//      { title: "video title name 2", image : "https://dappered.com/wp-content/uploads/2016/08/Playlist_Header_large_posterized.jpg",attached : "product attached 7"},
+//      { title: "video title name 3", image : "https://dappered.com/wp-content/uploads/2016/08/Playlist_Header_large_posterized.jpg",attached : "product attached 7"},
+//      { title: "video title name 4", image : "https://dappered.com/wp-content/uploads/2016/08/Playlist_Header_large_posterized.jpg",attached : "product attached 7"},
+//      { title: "video title name 5", image : "https://dappered.com/wp-content/uploads/2016/08/Playlist_Header_large_posterized.jpg",attached : "product attached 7"},
+//      { title: "video title name 6", image : "https://dappered.com/wp-content/uploads/2016/08/Playlist_Header_large_posterized.jpg",attached : "product attached 7"},
+//      { title: "video title name 7", image : "https://dappered.com/wp-content/uploads/2016/08/Playlist_Header_large_posterized.jpg",attached : "product attached 7"},
+//      { title: "video title name 1", image : "https://www.popsci.com/wp-content/uploads/2023/10/24/How-to-make-spotify-playlists.jpg?quality=85&w=2000",attached : "product attached 7"},
+//      { title: "video title name 2", image : "https://www.popsci.com/wp-content/uploads/2023/10/24/How-to-make-spotify-playlists.jpg?quality=85&w=2000",attached : "product attached 7"},
+//      { title: "video title name 3", image : "https://www.popsci.com/wp-content/uploads/2023/10/24/How-to-make-spotify-playlists.jpg?quality=85&w=2000",attached : "product attached 7"},
+//      { title: "video title name 4", image : "https://www.popsci.com/wp-content/uploads/2023/10/24/How-to-make-spotify-playlists.jpg?quality=85&w=2000",attached : "product attached 7"},
+//      { title: "video title name 5", image : "https://www.popsci.com/wp-content/uploads/2023/10/24/How-to-make-spotify-playlists.jpg?quality=85&w=2000",attached : "product attached 7"},
+//      { title: "video title name 6", image : "https://www.popsci.com/wp-content/uploads/2023/10/24/How-to-make-spotify-playlists.jpg?quality=85&w=2000",attached : "product attached 7"},
+//      { title: "video title name 7", image : "https://www.popsci.com/wp-content/uploads/2023/10/24/How-to-make-spotify-playlists.jpg?quality=85&w=2000",attached : "product attached 7"},
+//      ]
 
-// // Insert Initial Data
+
 // const seedDatabase = async () => {
 //   try {
-//     await Card.deleteMany({});
-//     await Card.insertMany(initialCards);
-//     console.log("Database seeded with initial cards");
+//     await List.deleteMany({});
+//     await List.insertMany(initialList);
+//     console.log("Database seeded with initial List");
 //     mongoose.disconnect();
 //   } catch (error) {
 //     console.error("Error seeding database:", error);

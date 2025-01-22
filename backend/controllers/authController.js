@@ -5,7 +5,9 @@ const Card = require("../models/cardModel.js");
 const fs = require("fs");
 const sendMail = require("../utils/nodemailer.js");
  const bcrypt = require("bcryptjs")
-const sendToken = require("../jwtToken/jwtToken.js")
+const sendToken = require("../jwtToken/jwtToken.js");
+const  List  = require("../models/listModel");
+
 
 function generateOTP(length = 6) {
   const digits = '0123456789';
@@ -87,3 +89,14 @@ exports.saveLayoutController = catchAsyncErrors(async (req, res) => {
   
     res.status(400).json({ message: "Invalid layout data" });
   });
+exports.listController = catchAsyncErrors(async (req,res)=>{
+  const { cardId } = req.params;
+    const card = await Card.findById(cardId);
+    if (!card) {
+      return res.status(404).json({ message: "Card not found" });
+    }
+    const listIds = card.lists;
+    const lists = await List.find({ _id: { $in: listIds } });
+    return res.status(200).json({ lists });
+  
+  })

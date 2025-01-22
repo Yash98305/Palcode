@@ -7,23 +7,23 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../context/auth";
 import axios from "axios";
-import { toast } from "react-toastify"; // Import react-toastify
+import { toast } from "react-toastify"; 
 
 const Login = () => {
   const { auth, setAuth, api } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [otp, setOtp] = useState(""); // State for OTP input
-  const [isOtpSent, setIsOtpSent] = useState(false); // State to show OTP input
-  const [buttonText, setButtonText] = useState("Send OTP"); // State for button text
+  const [otp, setOtp] = useState(""); 
+  const [isOtpSent, setIsOtpSent] = useState(false); 
+  const [buttonText, setButtonText] = useState("Send OTP"); 
 
   const handleOTP = async () => {
-    setButtonText("Sending OTP..."); // Change button text
+    setButtonText("Sending OTP..."); 
     try {
       const res = await axios.post(`${api}/auth/otp`, { email });
       console.log(res);
       setButtonText("OTP Sent");
-      setIsOtpSent(true); // Show OTP input field
+      setIsOtpSent(true); 
       toast.success("OTP sent successfully to your email!");
     } catch (error) {
       console.log(error);
@@ -78,7 +78,7 @@ const Login = () => {
             alignItems: "center",
             padding: "24px 40px 40px",
             width: "520px",
-            height: isOtpSent ? "480px" : "400px", // Adjust height dynamically
+            height: isOtpSent ? "480px" : "400px", 
             background:
               "linear-gradient(138.97deg, #111214 5.16%, #121212 105.18%)",
             border: "1px solid #343A40",
@@ -118,28 +118,28 @@ const Login = () => {
                 setEmail(e.target.value);
               }}
               InputProps={{
-                style: { color: "white" }, // Changes text color
+                style: { color: "white" }, 
               }}
               InputLabelProps={{
-                style: { color: "white" }, // Changes label color
+                style: { color: "white" }, 
               }}
               sx={{
                 width: "380px",
                 "& .MuiOutlinedInput-root": {
                   "& fieldset": {
-                    borderColor: "white", // Border color
+                    borderColor: "white", 
                   },
                   "&:hover fieldset": {
-                    borderColor: "gray", // Border color on hover
+                    borderColor: "gray", 
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "white", // Border color when focused
+                    borderColor: "white",
                   },
                 },
               }}
             />
           </Box>
-          {isOtpSent && ( // Render OTP input field if OTP is sent
+          {isOtpSent && (
             <Box sx={{ display: "flex", alignItems: "flex-end", mt: 3 }}>
               <VpnKeyIcon
                 sx={{ color: "white", scale: 2, mr: 3, my: 0.5, mb: 2 }}
@@ -151,22 +151,22 @@ const Login = () => {
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 InputProps={{
-                  style: { color: "white" }, // Changes text color
+                  style: { color: "white" }, 
                 }}
                 InputLabelProps={{
-                  style: { color: "white" }, // Changes label color
+                  style: { color: "white" }, 
                 }}
                 sx={{
                   width: "380px",
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
-                      borderColor: "white", // Border color
+                      borderColor: "white", 
                     },
                     "&:hover fieldset": {
-                      borderColor: "gray", // Border color on hover
+                      borderColor: "gray",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "white", // Border color when focused
+                      borderColor: "white", 
                     },
                   },
                 }}

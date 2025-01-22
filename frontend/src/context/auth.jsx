@@ -8,16 +8,14 @@ const AuthProvider = ({ children }) => {
     token: "",
   });
   
-  // Set the Authorization token in Axios whenever auth.token changes
   useEffect(() => {
     if (auth?.token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${auth.token}`;
     } else {
-      delete axios.defaults.headers.common["Authorization"]; // Remove the header if no token
+      delete axios.defaults.headers.common["Authorization"]; 
     }
   }, [auth.token]);
 
-  // Load token from localStorage
   useEffect(() => {
     const data = localStorage.getItem("auth");
     if (data) {
@@ -44,7 +42,6 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-// Custom hook for consuming the AuthContext
 const useAuth = () => useContext(AuthContext);
 
 export default useAuth;

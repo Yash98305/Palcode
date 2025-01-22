@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import useAuth from '../context/auth';
+import  {toast} from "react-toastify";
 
-const Navbar = () => {
+const Navbar = ({handleData,saveLayout,handleLoadLayout}) => {
+    const {auth,setAuth} = useAuth();
+    const navigate = useNavigate();
+    const handleLogout = ()=>{
+    
+        setAuth({
+          ...auth,
+          user: null,
+          token: "",
+        });
+        localStorage.removeItem("auth");
+        toast.success("Logout Successfully");
+
+        navigate("/")
+      
+  }  
   return (
     <div style={{
         height : "67px",
@@ -21,23 +39,23 @@ justifyContent:"space-between"
     display:"flex",
     justifyContent:"space-between"
 }} >
-<Button sx={{
+<Button onClick={handleData} sx={{
     border : "1px solid #017EFA",
     color:"#fff",
     borderRadius:3
 }} variant="outlined">Import Youtube</Button>
-<Button sx={{
+<Button onClick={saveLayout} sx={{
         border : "1px solid #017EFA",
      color:"#fff",
     borderRadius:3
 }}  variant="outlined">Save Layout</Button>
-<Button  sx={{
+<Button onClick={handleLoadLayout} sx={{
         border : "1px solid #017EFA",
 
      color:"#fff",
     borderRadius:3
 }} variant="outlined">Load Layout</Button>
-<Button sx={{
+<Button onClick={handleLogout} sx={{
         border : "1px solid #017EFA",
 
      color:"#fff",
