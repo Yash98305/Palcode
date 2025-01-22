@@ -2,7 +2,7 @@ import { useState, useEffect, useContext, createContext } from "react";
 import axios from "axios";
 
 const AuthContext = createContext(null);
-const api = "http://localhost:8000/api/v1"
+const api = "https://palcode-0shg.onrender.com/api/v1"
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
     token: "",
